@@ -1,5 +1,26 @@
 @charset "UTF-8";
 a{
-	color: black;
+	color: white;
 	text-decoration: none;
+}
+a:hover{
+	color: orange;
+}
+body {
+	background-color: teal;
+	color: white;
+}
+table {
+	border: 2px solid white;
+	padding: 1px;
+	cellpadding: 2px;
+}
+
+td,th{
+	border-bottom: 2px solid white;
+	padding: 5px 2px;
+	margin: 0;
+}
+th{
+	font-size: 30px;
 }

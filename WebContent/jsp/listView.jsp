@@ -17,8 +17,8 @@
 	<h1>212 ~ 자유 게시판  ~ </h1>
 </header>
 <main>
-	<table align="center" width="1000" border="3" cellpadding="4" cellspacing="3">
-		<tr>
+	<table align="center" width="1000" cellspacing="0">
+		<tr >
 			<th colspan="5">자유 게시판 ~~ made by leemanni</th>
 		</tr>
 		<tr>
@@ -52,6 +52,9 @@
 						<c:if test="${date.year == vo.writeDate.year && date.month == vo.writeDate.month && date.date == vo.writeDate.date }">
 							<i class="far fa-hand-spock"></i>
 						</c:if>
+						<c:if test="${vo.hit >= 0 }">
+			 				<i class="far fa-thumbs-up"></i>
+			 			</c:if>
 					</a>
 				</td>
 				<td align="center">
