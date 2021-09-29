@@ -1,7 +1,12 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.leemanni.vo.FreeBoardCommentVO">
-	
+
+	<!-- 댓글 한건 추가 -->
+	<insert id="insertComment" parameterType="co">
+		insert into freeboardcomment (idx, gup, name, password, content, ip)
+		values (freeboardcomment_idx_seq.nextval, #{gup}, #{name}, #{password}, #{content}, #{ip})
+	</insert>
 	
 </mapper>
 

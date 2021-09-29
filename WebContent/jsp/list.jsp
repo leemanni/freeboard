@@ -1,3 +1,5 @@
+<%@page import="com.leemanni.vo.FreeBoardVO"%>
+<%@page import="java.util.ArrayList"%>
 <%@page import="com.leemanni.service.FreeBoardService"%>
 <%@page import="com.leemanni.vo.FreeBoardList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -13,13 +15,16 @@
 	request.setCharacterEncoding("UTF-8");
 	
 	// 페이지 만들 페이지들 모아주기
-	
 	int currentPage = 1;
 	try{
 		currentPage = Integer.parseInt(request.getParameter("currentPage"));
 	}catch(NumberFormatException e){;}
+	FreeBoardService service = FreeBoardService.getInstance();
+	// 공지글을 얻어온다
+	ArrayList<FreeBoardVO> notice = service.selectNotice();
+	FreeBoardList freeBoardList = service.seleteList(currentPage);
 	
-	FreeBoardList freeBoardList = FreeBoardService.getInstance().seleteList(currentPage);
+	request.setAttribute("notice", notice);
 	request.setAttribute("freeBoardList", freeBoardList);
 	pageContext.forward("listView.jsp");
 %>

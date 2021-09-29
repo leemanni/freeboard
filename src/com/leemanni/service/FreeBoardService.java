@@ -1,5 +1,6 @@
 package com.leemanni.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.swing.plaf.synth.SynthSpinnerUI;
@@ -14,6 +15,10 @@ import com.leemanni.vo.FreeBoardVO;
 /**
  * @author leemanni
  *	메인 게시글 service 클래스
+ */
+/**
+ * @author cjffy
+ *
  */
 public class FreeBoardService {
 	private static FreeBoardService instance = new FreeBoardService();
@@ -60,9 +65,69 @@ public class FreeBoardService {
 		return freeBoardList;
 	}
 	
+	/**
+	 * @param idx
+	 * 선택된 게시글의 조회수를 1씩 증가시키기 위해 DAO 를 실행시키는 메소드
+	 */
+	public void increment(int idx) {
+		System.out.println("FreeBoardService ==> increment");
+		SqlSession mapper = MySession.getSession();
+		FreeBoardDAO.getInstance().increment(mapper, idx);
+		mapper.commit();
+		mapper.close();
+	}
 	
+	/**
+	 * @param idx
+	 * @return
+	 * 선택된 글에 대한 정보를 가져옴
+	 */
+	public FreeBoardVO selectByIdx(int idx) {
+		System.out.println("FreeBoardService ==> selectByIdx");
+		SqlSession mapper = MySession.getSession();
+		FreeBoardVO vo = FreeBoardDAO.getInstance().selectByIdx(mapper, idx);
+		System.out.println(vo);
+		mapper.close();
+		return vo;
+	}
 	
+	/**
+	 * @param idx
+	 * 해당 글번호 글 삭제 요청하는 메소드
+	 */
+	public void delete(int idx) {
+		System.out.println("FreeBoardService ==> selectByIdx");
+		SqlSession mapper = MySession.getSession();
+		FreeBoardDAO.getInstance().delete(mapper, idx);
+		mapper.commit();
+		mapper.close();
+	}
 	
+	/**
+	 * @return
+	 * 공지글 얻어오는 메소드
+	 */
+	public ArrayList<FreeBoardVO> selectNotice() {
+		System.out.println("FreeBoardService ==> selectNotice");
+		SqlSession mapper = MySession.getSession();
+		ArrayList<FreeBoardVO> notice =  FreeBoardDAO.getInstance().selectNotice(mapper);
+		System.out.println(notice);
+		mapper.commit();
+		mapper.close();
+		return notice;
+	}
+	
+	/**
+	 * @param vo
+	 * 게시글 수정을 요청하는 메소드
+	 */
+	public void update(FreeBoardVO vo) {
+		System.out.println("FreeBoardService ==> selectNotice");
+		SqlSession mapper = MySession.getSession();
+		FreeBoardDAO.getInstance().update(mapper, vo);
+		mapper.commit();
+		mapper.close();
+	}
 }
 
 

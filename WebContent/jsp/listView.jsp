@@ -29,7 +29,32 @@
 			<td width="70" align="center">조회수</td>
 		</tr>
 		<!-- 공지글 있으면 출력 -->
-		
+		<c:forEach var="vo" items="${notice}">
+		 	<tr bgcolor="teal">
+		 		<td align="center">
+		 			<i class="fas fa-exclamation"></i>
+		 		</td>
+		 		<td>
+		 			<!-- 제목에 테그 사용 방지 -->
+		 			<c:set var="subject" value="${fn:replace(vo.subject, '<', '&lt')} "/>
+		 			<c:set var="subject" value="${fn:replace(subject, '>', '&gt')} "/>
+		 			<a href="increment.jsp?idx=${vo.idx}&currentPage=${freeBoardList.currentPage}">
+		 				${subject}
+		 			</a>
+		 		</td>
+		 		<td align="center">
+		 			<c:set var="name" value="${fn:replace(vo.name, '<', '&lt')} "/>
+		 			<c:set var="name" value="${fn:replace(name, '>', '&gt')} "/>
+		 			${vo.name}
+	 			</td>
+		 		<td align="center">
+		 			<fmt:formatDate value="${vo.writeDate}" pattern="yyyy.MM.dd(E)"/>
+		 		</td>
+		 		<td align="center">
+	 				${vo.hit}
+		 		</td>
+		 	</tr>
+		 </c:forEach>
 		<!-- 메인 글 출력 -->
 		<!-- 글이 1건도 없을 때 -->
 		<c:if test="${list.size() == 0 }">
@@ -47,12 +72,12 @@
 				<td>
 					<c:set var="subject" value="${fn:replace(vo.subject, '<', '&lt')} "/>
 	 				<c:set var="subject" value="${fn:replace(subject, '>', '&gt')} "/>
-					<a href="#">
+					<a href="increment.jsp?idx=${vo.idx}&currentPage=${freeBoardList.currentPage}">
 						${subject} (${vo.commentCount})
 						<c:if test="${date.year == vo.writeDate.year && date.month == vo.writeDate.month && date.date == vo.writeDate.date }">
 							<i class="far fa-hand-spock"></i>
 						</c:if>
-						<c:if test="${vo.hit >= 0 }">
+						<c:if test="${vo.hit >= 10 }">
 			 				<i class="far fa-thumbs-up"></i>
 			 			</c:if>
 					</a>
