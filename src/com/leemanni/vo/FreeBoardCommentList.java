@@ -7,14 +7,14 @@ import java.util.ArrayList;
  * 특정 메인글의 댓글 목록을 기억한다.
  */
 public class FreeBoardCommentList {
-	ArrayList<FreeBoardVO> list = new ArrayList<>();
+	ArrayList<FreeBoardCommentVO> list = new ArrayList<>();
 
-	public ArrayList<FreeBoardVO> getList() {
+	public ArrayList<FreeBoardCommentVO> getList() {
 		return list;
 	}
 
-	public void setList(ArrayList<FreeBoardVO> list) {
-		this.list = list;
+	public void setList(ArrayList<FreeBoardCommentVO> arrayList) {
+		this.list = arrayList;
 	}
 
 	@Override

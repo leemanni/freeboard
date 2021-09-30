@@ -20,12 +20,6 @@
 		
 		// job => contentView 해당 글 보여주기 , delete or update => 삭제 수정!
 		response.sendRedirect("selectByIdx.jsp?idx="+idx+"&currentPage="+currentPage+"&job=contentView");
-		
-		
-		
-		
-		
-		
 	%>
 </body>
 </html>

@@ -8,6 +8,7 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/style.css">
+<script type="text/javascript" src="../javascript/setting.js"></script>
 <title>212 자유 게시판 - 해당 글 보기</title>
 </head>
 <body>
@@ -73,13 +74,13 @@
 			</td>
 		</tr>
 	</table>
-	<hr color="white" size="3">
-	
+	<hr color="gray" size="3" width="1000">
+	<!--  -->
 	<form action="commentOK.jsp" name ="commentForm" method="post">
 		<table align="center" width="1000" cellspacing="0">
 			<tr>
 				<!-- 댓글이보이면 안되는 줄로 작업이 완료 되면 hiddend으로 처리한다. -->
-				<td bgcolor="gray" colspan="4">
+				<td bgcolor="gray" colspan="4" class="userComment-hidden">
 					idx : <input type="text" name="idx" value="${vo.idx}" size="1"> <!-- 수정 또는 삭제할 댓글의 글번호 넘겨줌 -->
 					gup : <input type="text" name="gup" value="${vo.idx}" size="1"> <!--현재 댓글이 어떤 메인글의 댓글을 넘겨준다 -->
 					mode : <input type="text" name="mode" value="1" size="1"> <!-- 작업모드, 1=> 댓글저장, 2=> 댓글 수정, 3 => 댓글 삭제 -->
@@ -112,17 +113,40 @@
 			<tr>
 			 	<td colspan="4" align="center">
 			 		<input type="submit" value="댓글쓰기" name="commentBtn"/>
-			 		<input type="button" value="다시쓰기" />
+			 		<input type="button" value="다시쓰기" onclick="setting(0, 1, '댓글저장', '', '')"/>
 				</td>
 			</tr>
+			<!-- 댓글 출력 -->
+			<c:set var="commentList" value="${freeBoardCommentList.list}"/>
+			<c:if test="${commentList.size()==0 }">
+			<tr>
+				<td colspan="4" align="center"><span>댓글이 존재 하지 않습니다.</span> </td>				
+			</tr>
+			</c:if>
+			<c:if test="${commentList.size()!=0 }">
+			<c:forEach var="co" items="${commentList }">
+			<tr>
+				<td colspan="3" align="center">
+					${co.idx }.
+					<c:set var="name" value="${fn:replace(co.name, '<', '&lt;')} "/>
+		 			<c:set var="name" value="${fn:replace(name, '>', '&gt;')} "/>
+					${name} 님 <br/>
+					<c:set var="content" value="${fn:replace(co.content, '<', '&lt;')} "/>
+		 			<c:set var="content" value="${fn:replace(content, '>', '&gt;')} "/>
+		 			<c:set var="content" value="${fn:replace(content,enter,'<br/>')}"/>
+					${content }<br/>
+					  <fmt:formatDate value="${co.writeDate}" pattern="yyyy.MM.dd(E) HH:mm:ss"/> 에 남긴 글
+				  &nbsp;
+				</td>
+				<td>
+					<input type="button" value="수정" onclick="setting(${co.idx}, 2, '댓글수정', '${name}', '${content}' )">
+					<input type="button" value="삭제" onclick="setting(${co.idx}, 3, '댓글삭제', '${name}', '${content}' )">
+				</td>
+			</tr>
+			</c:forEach>
+			</c:if>
 		</table>
 	</form>
-	
-	
-	
-	
-	
-	
 	
 	
 <script src="https://kit.fontawesome.com/27afa53023.js" crossorigin="anonymous"></script>

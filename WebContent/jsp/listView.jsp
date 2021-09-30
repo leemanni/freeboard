@@ -39,13 +39,13 @@
 		 			<c:set var="subject" value="${fn:replace(vo.subject, '<', '&lt')} "/>
 		 			<c:set var="subject" value="${fn:replace(subject, '>', '&gt')} "/>
 		 			<a href="increment.jsp?idx=${vo.idx}&currentPage=${freeBoardList.currentPage}">
-		 				${subject}
+		 				${subject} (${vo.commentCount})
 		 			</a>
 		 		</td>
 		 		<td align="center">
 		 			<c:set var="name" value="${fn:replace(vo.name, '<', '&lt')} "/>
 		 			<c:set var="name" value="${fn:replace(name, '>', '&gt')} "/>
-		 			${vo.name}
+		 			${vo.name} 
 	 			</td>
 		 		<td align="center">
 		 			<fmt:formatDate value="${vo.writeDate}" pattern="yyyy.MM.dd(E)"/>

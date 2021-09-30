@@ -20,18 +20,29 @@
 	FreeBoardCommentService service = FreeBoardCommentService.getInstance();
 	out.println("<script>");
 	switch(mode){
-		case 1:
+		case 1: // 삽입
 			if(service.insertComment(co)){
 				out.println("alert('댓글 저장 성공')");
 			}else{
 				out.println("alert('댓글 저장 실패')");
 			}
 			break;
-		case 2:
+		case 2: // 수정
+			if(service.updateComment(co)){
+				out.println("alert('댓글 수정 성공')");
+			}else{
+				out.println("alert('댓글 수정 실패')");
+			}
 			break;
-		case 3:
+		case 3: // 삭제
+			if(service.deleteComment(co)){
+				out.println("alert('댓글 삭제 성공')");
+			}else{
+				out.println("alert('댓글 삭제 실패')");
+			}
 			break;
 	}
+	out.println("location.href='selectByIdx.jsp?idx="+co.getGup()+"&currentPage="+currentPage+"&job=contentView'");
 	out.println("</script>");
 %>
 </body>

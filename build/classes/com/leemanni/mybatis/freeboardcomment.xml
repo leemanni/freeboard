@@ -8,6 +8,31 @@
 		values (freeboardcomment_idx_seq.nextval, #{gup}, #{name}, #{password}, #{content}, #{ip})
 	</insert>
 	
+	<!-- 댓글 개수 가져옴 -->
+	<select id="commentCount" parameterType="int" resultType="int">
+		select count(*) from freeboardcomment where gup = #{idx}
+	</select>
+	
+	<!-- 댓글 목록 가져오기 -->
+	<select id="selectCommentList" parameterType="int" resultType="co">
+		select * from freeboardcomment where gup = #{idx} order by idx desc
+	</select>
+	
+	<!-- 선택한 댓글 가져오기 -->
+	<select id="selectByComment" parameterType="int" resultType="co">
+		select * from freeboardcomment where idx =#{idx}
+	</select>
+	
+	<!-- 댓글 수정하기 -->
+	<update id="updateComment" parameterType="co">
+		update freeboardcomment set content = #{content} where idx = #{idx} 
+	</update>
+	
+	<delete id="deleteComment" parameterType="int">
+		delete from freeboardcomment where idx = #{idx}
+	</delete>
+	
+	
 </mapper>
 
 

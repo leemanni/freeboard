@@ -51,7 +51,6 @@ public class FreeBoardService {
 		System.out.println("FreeBoardService ==> seleteList");
 		SqlSession mapper = MySession.getSession();
 		FreeBoardDAO dao = FreeBoardDAO.getInstance();
-		
 		int pageSize = 10;
 		int totalCount = dao.countList(mapper);
 		FreeBoardList freeBoardList = new FreeBoardList(pageSize, totalCount, currentPage);
@@ -59,7 +58,6 @@ public class FreeBoardService {
 		hmap.put("startNo", freeBoardList.getStartNo());
 		hmap.put("endNo", freeBoardList.getEndNo());
 		freeBoardList.setList(dao.selectList(mapper, hmap));
-		
 		mapper.commit();
 		mapper.close();
 		return freeBoardList;
@@ -86,7 +84,7 @@ public class FreeBoardService {
 		System.out.println("FreeBoardService ==> selectByIdx");
 		SqlSession mapper = MySession.getSession();
 		FreeBoardVO vo = FreeBoardDAO.getInstance().selectByIdx(mapper, idx);
-		System.out.println(vo);
+//		System.out.println(vo);
 		mapper.close();
 		return vo;
 	}
@@ -111,7 +109,6 @@ public class FreeBoardService {
 		System.out.println("FreeBoardService ==> selectNotice");
 		SqlSession mapper = MySession.getSession();
 		ArrayList<FreeBoardVO> notice =  FreeBoardDAO.getInstance().selectNotice(mapper);
-		System.out.println(notice);
 		mapper.commit();
 		mapper.close();
 		return notice;
@@ -129,6 +126,36 @@ public class FreeBoardService {
 		mapper.close();
 	}
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

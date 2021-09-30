@@ -24,3 +24,6 @@ td,th{
 th{
 	font-size: 30px;
 }
+.userComment-hidden{
+	display: none;
+}
