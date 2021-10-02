@@ -6,9 +6,15 @@
 <meta charset="UTF-8">
 <title>212 자유 게시판</title>
 </head>
+<link rel="stylesheet" href="../css/style.css">
 <body>
-<header>
-	<h1>212 ~ 자유 게시판  ~ </h1>
+<header class="freeboard-header">
+	<h1 class="freeboard-header__title">212 ~ 자유 게시판  ~ </h1>
+	<div class="freeboard-header-link">
+		<a class="freeboard-header-link__writebtn btn-none-index" >
+			<i class="fa fa-pencil"> 새 글 쓰기</i>
+		</a>
+	</div>
 </header>
 
 <form action="insertOK.jsp" method="post">
@@ -19,19 +25,19 @@
 			</th>
 		</tr>
 		<tr>
-		 	<td width="15%">
+		 	<td align="center" width="15%">
 		 		<label for="name">이름</label>
 		 	</td>
 		 	<td width="70%">
 		 		<input type="text" id="name" name="name" style="width: 95%" />
 		 	</td>
-		 	<td width="15%">
+		 	<td align="center" width="15%">
 		 		공지글
-		 		<input type="checkbox" name="name" value="notice" name ="notice">
+		 		<input type="checkbox" name="notice" value="notice">
 		 	</td>
 		 </tr>
 		<tr>
-		 	<td width="15%">
+		 	<td align="center" width="15%">
 		 		<label for="password">비밀번호</label>
 		 	</td>
 		 	<td width="85%" colspan="2">
@@ -39,7 +45,7 @@
 		 	</td>
 		 </tr>
 		<tr>
-		 	<td width="15%">
+		 	<td align="center" width="15%">
 		 		<label for="subject">제목</label>
 		 	</td>
 		 	<td width="85%" colspan="2">
@@ -47,7 +53,7 @@
 		 	</td>
 		 </tr>
 		<tr>
-		 	<td width="15%">
+		 	<td align="center" width="15%">
 		 		<label for="content">내용</label>
 		 	</td>
 		 	<td width="85%" colspan="2">
@@ -55,7 +61,7 @@
 		 	</td>
 		 </tr>
 		 <tr>
-		 	<td colspan="3">
+		 	<td align="center" colspan="3">
 		 		<input type="submit" value="저장하기">
 		 		<input type="reset">
 		 		<input type="button" value="돌아가기" onclick="history.back()">
@@ -65,6 +71,6 @@
 	<input type="hidden"  name="ip" value="${pageContext.request.remoteAddr}">
 </form>
 
-
+<script src="https://kit.fontawesome.com/27afa53023.js" crossorigin="anonymous"></script>
 </body>
 </html>

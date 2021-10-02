@@ -26,15 +26,15 @@
 		</tr>
 		
 		<tr>
-			<td align="center">
+			<td class="table-idx table_border" align="center">
 				${vo.idx}
 			</td>
-			<td align="center">
+			<td class="table_border" align="center">
 				<c:set var="name" value="${fn:replace(vo.name, '<', '&lt;')} "/>
 	 			<c:set var="name" value="${fn:replace(name, '>', '&gt;')} "/>
 				${vo.name}
 			</td>
-			<td align="center">
+			<td class="table_border" align="center">
 				<c:if test="${date.year == vo.writeDate.year && date.month == vo.writeDate.month && date.date == vo.writeDate.date }">
 		 			<fmt:formatDate value="${vo.writeDate}" pattern="a h:mm"/>
 	 			</c:if>
@@ -47,7 +47,7 @@
  			</td>
 		</tr>
 		<tr>
-			<td align="center">
+			<td class="table_border" align="center">
 				제목
 			</td>
 			<td colspan="3" align="center">
@@ -57,8 +57,8 @@
 			</td>
 		</tr>	
 		<tr>
-			<td align="center">내용</td>
-			<td colspan="3">
+			<td class="table_border" align="center">내용</td>
+			<td class="table-subject" colspan="3">
 				<c:set var="content" value="${fn:replace(vo.content, '<', '&lt;')} "/>
 	 			<c:set var="content" value="${fn:replace(content, '>', '&gt;')} "/>
 	 			<c:set var="content" value="${fn:replace(content,enter,'<br/>')}"/>
@@ -147,6 +147,10 @@
 			</c:if>
 		</table>
 	</form>
+	<footer class="board-footer">
+	<span>자유 게시판 ~~ made by leemanni</span>
+	<a href="https://github.com/leemanni">leemanni's github</a>
+</footer>
 	
 	
 <script src="https://kit.fontawesome.com/27afa53023.js" crossorigin="anonymous"></script>

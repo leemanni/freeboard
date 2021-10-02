@@ -13,14 +13,17 @@
 <body>
 <jsp:useBean id="date" class="java.util.Date"/>
 <c:set var="list" value="#{freeBoardList.list}"/>
-<header>
-	<h1>212 ~ 자유 게시판  ~ </h1>
+<header class="freeboard-header">
+	<h1 class="freeboard-header__title">212 ~ 자유 게시판  ~ </h1>
+	<div class="freeboard-header-link">
+		<a class="freeboard-header-link__writebtn" onclick="location.href='index.jsp'">
+			<i class="fa fa-pencil"> 새 글 쓰기</i>
+		</a>
+	</div>
 </header>
 <main>
+ <tr>
 	<table align="center" width="1000" cellspacing="0">
-		<tr >
-			<th colspan="5">자유 게시판 ~~ made by leemanni</th>
-		</tr>
 		<tr>
 			<td width="70" align="center">글 번호</td>
 			<td width="640" align="center">제목</td>
@@ -31,10 +34,10 @@
 		<!-- 공지글 있으면 출력 -->
 		<c:forEach var="vo" items="${notice}">
 		 	<tr bgcolor="teal">
-		 		<td align="center">
+		 		<td class="table-idx" align="center">
 		 			<i class="fas fa-exclamation"></i>
 		 		</td>
-		 		<td>
+		 		<td class="table-subject">
 		 			<!-- 제목에 테그 사용 방지 -->
 		 			<c:set var="subject" value="${fn:replace(vo.subject, '<', '&lt')} "/>
 		 			<c:set var="subject" value="${fn:replace(subject, '>', '&gt')} "/>
@@ -68,8 +71,8 @@
 		<c:if test="${list.size() != 0 }">
 			<c:forEach var="vo" items="${list }">
 			<tr>
-				<td align="center">${vo.idx}</td>
-				<td>
+				<td class="table-idx" align="center" >${vo.idx}</td>
+				<td class="table-subject">
 					<c:set var="subject" value="${fn:replace(vo.subject, '<', '&lt')} "/>
 	 				<c:set var="subject" value="${fn:replace(subject, '>', '&gt')} "/>
 					<a href="increment.jsp?idx=${vo.idx}&currentPage=${freeBoardList.currentPage}">
@@ -103,59 +106,75 @@
 		</c:if>
 		 <!-- 페이지 이동버튼 -->
 		 <tr>
-			<td align="center" colspan="5">
+			<td class="table-lastdata" align="center" colspan="5">
 			<!-- 처음으로 -->
 				<c:if test="${freeBoardList.currentPage > 1}">
-					<button class="button button1" type="button" title="첫 페이지로" onclick="location.href='?currentPage=1'">처음</button>
+					<a onclick="location.href='?currentPage=1'" >
+						<i class="fas fa-backward"></i>
+					</a>
 				</c:if>
 				
 				<c:if test="${freeBoardList.currentPage <= 1}">
-					<button class="button button2" type="button" title="이미 첫 페이지입니다." disabled="disabled">처음</button>
+					<a class=btn-none >
+						<i class="fas fa-backward"></i>
+					</a>
+					<!-- <button class="button button2" type="button" title="이미 첫 페이지입니다." disabled="disabled">처음</button> -->
 				</c:if>
 			<!-- 10페이지 앞으로 -->
 				<c:if test="${freeBoardList.startPage > 1}">
-					<button class="button button1" type="button" title="이전 10페이지로" 
-					onclick="location.href='?currentPage=${freeBoardList.startPage - 1}'">이전</button>
+					<a onclick="location.href='?currentPage=${freeBoardList.startPage - 1}'" >
+						<i class="fas fa-chevron-left"></i>
+					</a>
 				</c:if>
 				<c:if test="${freeBoardList.startPage <= 1}">
-					<button class="button button2" type="button" title="이미 첫 10 페이지입니다." disabled="disabled">이전</button>
+					<a class=btn-none>
+						<i class="fas fa-chevron-left"></i>
+					</a>
 				</c:if>
 				<c:forEach var="i" begin="${freeBoardList.startPage}" end="${freeBoardList.endPage}" step="1">
 				
 					<c:if test="${freeBoardList.currentPage == i}">
-						<button class="button button2" type="button" disabled="disabled">${i}</button>
+						<a class="btn-none">
+							${i}
+						</a>
 					</c:if>
 					<c:if test="${freeBoardList.currentPage != i}">
-						<button class="button button1" type="button" onclick="location.href='?currentPage=${i}'">${i}</button>
+						<a class="btn-number" onclick="location.href='?currentPage=${i}'">
+							${i}
+						</a>
 					</c:if>
 				</c:forEach>
 			<!-- 10페이지 뒤로 -->
 				<c:if test="${freeBoardList.currentPage < freeBoardList.totalPage}">
-					<button class="button button1" type="button" title="다음 10페이지로" 
-					onclick="location.href='?currentPage=${freeBoardList.endPage +1}'">다음</button>
+					<a onclick="location.href='?currentPage=${freeBoardList.endPage +1}'" >
+						<i class="fas fa-chevron-right"></i>
+					</a>
 				</c:if>
 				<c:if test="${freeBoardList.currentPage >= freeBoardList.totalPage}">
-					<button class="button button2" type="button" title="이미 마지막 페이지입니다." disabled="disabled">다음</button>
+					<a class="btn-none" >
+						<i class="fas fa-chevron-right"></i>
+					</a>
 				</c:if>
 				
 			<!-- 맨뒤로 -->
 				<c:if test="${freeBoardList.currentPage < freeBoardList.totalPage}">
-					<button class="button button1" type="button" title="마지막 페이지로" 
-					onclick="location.href='?currentPage=${freeBoardList.totalPage}'">마지막</button>
+					<a onclick="location.href='?currentPage=${freeBoardList.totalPage}'">
+						<i class="fas fa-forward" ></i>
+					</a>
 				</c:if>
 				<c:if test="${freeBoardList.currentPage >= freeBoardList.totalPage}">
-					<button class="button button2" type="button" title="이미 마지막 페이지입니다." disabled="disabled">맨뒤</button>
+					<a class=btn-none onclick="location.href='?currentPage=${freeBoardList.totalPage}'">
+						<i class="fas fa-forward" ></i>
+					</a>
 				</c:if>
-			</td>
-		</tr>
-		<!-- 글쓰기 버튼  -->
-		 <tr>
-			<td align="right" colspan="5">
-				<input type="button" value="글쓰기" onclick="location.href='insert.jsp'"/>
 			</td>
 		</tr>
 	</table>
 </main>
+<footer class="board-footer">
+	<span>자유 게시판 ~~ made by leemanni</span>
+	<a href="https://github.com/leemanni">leemanni's github</a>
+</footer>
 <script src="https://kit.fontawesome.com/27afa53023.js" crossorigin="anonymous"></script>
 </body>
 </html>
