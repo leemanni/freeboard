@@ -85,8 +85,7 @@ public class FreeBoardService {
 	}
 
 	/**
-	 * @param idx 
-	 * 해당 글번호 글 삭제 요청하는 메소드
+	 * @param idx 해당 글번호 글 삭제 요청하는 메소드
 	 */
 	public void delete(int idx) {
 		System.out.println("FreeBoardService ==> selectByIdx");
@@ -109,8 +108,7 @@ public class FreeBoardService {
 	}
 
 	/**
-	 * @param vo 
-	 * 게시글 수정을 요청하는 메소드
+	 * @param vo 게시글 수정을 요청하는 메소드
 	 */
 	public void update(FreeBoardVO vo) {
 		System.out.println("FreeBoardService ==> selectNotice");

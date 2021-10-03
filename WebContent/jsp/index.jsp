@@ -71,6 +71,10 @@
 	<input type="hidden"  name="ip" value="${pageContext.request.remoteAddr}">
 </form>
 
+<footer class="board-footer">
+	<span>자유 게시판 ~~ made by leemanni</span>
+	<a href="https://github.com/leemanni"><i class="fab fa-github"></i>&nbsp;leemanni's github</a>
+</footer>
 <script src="https://kit.fontawesome.com/27afa53023.js" crossorigin="anonymous"></script>
 </body>
 </html>

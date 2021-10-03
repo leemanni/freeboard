@@ -26,15 +26,15 @@
 			</tr>
 			
 			<tr>
-				<td align="center">
+				<td class="table_border" align="center">
 					${vo.idx }
 				</td>
-				<td align="center">
+				<td class="table_border" align="center">
 					<c:set var="name" value="${fn:replace(vo.name, '<', '&lt;')} "/>
 		 			<c:set var="name" value="${fn:replace(name, '>', '&gt;')} "/>
 					${name}
 				</td>
-				<td align="center">
+				<td class="table_border" align="center">
 					<c:if test="${date.year == vo.writeDate.year && date.month == vo.writeDate.month && date.date == vo.writeDate.date }">
 			 			<fmt:formatDate value="${vo.writeDate}" pattern="a h:mm"/>
 		 			</c:if>
@@ -73,10 +73,10 @@
 				<td colspan="4" align="center">
 					<label for="passwod">비밀번호</label>
 					<input type="password" id="password" name ="password">
-					<input type="submit" value="수정하기">
-					<input type="reset" value="다시쓰기">
-					<input type="button" value="돌아가기" onclick="history.go(-1)">
-					<input type="button" value="목록으로" onclick="location.href='list.jsp?currentPage=${currentPage}'"/>
+					<input class="button" type="submit" value="수정하기">
+					<input class="button" type="reset" value="다시쓰기">
+					<input class="button" type="button" value="돌아가기" onclick="history.go(-1)">
+					<input class="button" type="button" value="목록으로" onclick="location.href='list.jsp?currentPage=${currentPage}'"/>
 				</td>
 			</tr>
 		</table>
@@ -84,7 +84,10 @@
 		<input type="hidden" name="currentPage" value="${currentPage}">
 	</form>
 	
-	
+<footer class="board-footer">
+	<span>자유 게시판 ~~ made by leemanni</span>
+	<a href="https://github.com/leemanni"><i class="fab fa-github"></i>&nbsp;leemanni's github</a>
+</footer>
 	
 <script src="https://kit.fontawesome.com/27afa53023.js" crossorigin="anonymous"></script>
 </body>

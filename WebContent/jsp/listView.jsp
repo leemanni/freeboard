@@ -25,7 +25,7 @@
  <tr>
 	<table align="center" width="1000" cellspacing="0">
 		<tr>
-			<td width="70" align="center">글 번호</td>
+			<td width="70" align="center">번호</td>
 			<td width="640" align="center">제목</td>
 			<td width="100" align="center">이름</td>
 			<td width="120" align="center">작성일</td>
@@ -173,7 +173,7 @@
 </main>
 <footer class="board-footer">
 	<span>자유 게시판 ~~ made by leemanni</span>
-	<a href="https://github.com/leemanni">leemanni's github</a>
+	<a href="https://github.com/leemanni"><i class="fab fa-github"></i>&nbsp;leemanni's github</a>
 </footer>
 <script src="https://kit.fontawesome.com/27afa53023.js" crossorigin="anonymous"></script>
 </body>

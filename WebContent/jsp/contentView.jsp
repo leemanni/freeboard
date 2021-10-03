@@ -67,17 +67,17 @@
 		</tr>	
 		<tr>
 			<td colspan="4" align="center">
-				<input type="button" value="수정하기" onclick="location.href='selectByIdx.jsp?idx=${vo.idx}&currentPage=${currentPage}&job=update'"/>
-				<input type="button" value="삭제하기" onclick="location.href='selectByIdx.jsp?idx=${vo.idx}&currentPage=${currentPage}&job=delete'"/>
+				<input class="button" type="button" value="수정하기" onclick="location.href='selectByIdx.jsp?idx=${vo.idx}&currentPage=${currentPage}&job=update'"/>
+				<input class="button" type="button" value="삭제하기" onclick="location.href='selectByIdx.jsp?idx=${vo.idx}&currentPage=${currentPage}&job=delete'"/>
 				<!--onclick="history.back() or .go(-1)" 는 데이터 안넘어가서 location.href 로 해야돼  -->
-				<input type="button" value="돌아가기" onclick="location.href='list.jsp?hit=${vo.hit}'">
+				<input class="button" type="button" value="돌아가기" onclick="location.href='list.jsp?hit=${vo.hit}'">
 			</td>
 		</tr>
 	</table>
 	<hr color="gray" size="3" width="1000">
 	<!--  -->
 	<form action="commentOK.jsp" name ="commentForm" method="post">
-		<table align="center" width="1000" cellspacing="0">
+		<table class="comment-table" align="center" width="1000" cellspacing="0">
 			<tr>
 				<!-- 댓글이보이면 안되는 줄로 작업이 완료 되면 hiddend으로 처리한다. -->
 				<td bgcolor="gray" colspan="4" class="userComment-hidden">
@@ -112,15 +112,15 @@
 			</tr>
 			<tr>
 			 	<td colspan="4" align="center">
-			 		<input type="submit" value="댓글쓰기" name="commentBtn"/>
-			 		<input type="button" value="다시쓰기" onclick="setting(0, 1, '댓글저장', '', '')"/>
+			 		<input class="button" type="submit" value="댓글쓰기" name="commentBtn"/>
+			 		<input class="button" type="button" value="다시쓰기" onclick="setting(0, 1, '댓글저장', '', '')"/>
 				</td>
 			</tr>
 			<!-- 댓글 출력 -->
 			<c:set var="commentList" value="${freeBoardCommentList.list}"/>
 			<c:if test="${commentList.size()==0 }">
 			<tr>
-				<td colspan="4" align="center"><span>댓글이 존재 하지 않습니다.</span> </td>				
+				<td class="table-lastdata" colspan="4" align="center"><span>댓글이 존재 하지 않습니다.</span> </td>				
 			</tr>
 			</c:if>
 			<c:if test="${commentList.size()!=0 }">
@@ -134,22 +134,22 @@
 					<c:set var="content" value="${fn:replace(co.content, '<', '&lt;')} "/>
 		 			<c:set var="content" value="${fn:replace(content, '>', '&gt;')} "/>
 		 			<c:set var="content" value="${fn:replace(content,enter,'<br/>')}"/>
-					${content }<br/>
+					${content}<br/>
 					  <fmt:formatDate value="${co.writeDate}" pattern="yyyy.MM.dd(E) HH:mm:ss"/> 에 남긴 글
 				  &nbsp;
 				</td>
 				<td>
-					<input type="button" value="수정" onclick="setting(${co.idx}, 2, '댓글수정', '${name}', '${content}' )">
-					<input type="button" value="삭제" onclick="setting(${co.idx}, 3, '댓글삭제', '${name}', '${content}' )">
+					<input class="button" type="button" value="수정" onclick="setting(${co.idx}, 2, '댓글수정', '${name}', '${content}' )">
+					<input class="button" type="button" value="삭제" onclick="setting(${co.idx}, 3, '댓글삭제', '${name}', '${content}' )">
 				</td>
 			</tr>
 			</c:forEach>
 			</c:if>
 		</table>
 	</form>
-	<footer class="board-footer">
+<footer class="board-footer">
 	<span>자유 게시판 ~~ made by leemanni</span>
-	<a href="https://github.com/leemanni">leemanni's github</a>
+	<a href="https://github.com/leemanni"><i class="fab fa-github"></i>&nbsp;leemanni's github</a>
 </footer>
 	
 	

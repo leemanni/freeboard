@@ -24,3 +24,6 @@ th{
 .table-lastdata{
 	border: 0px;
 }
+.comment-table tr:last-child td{
+	border-bottom: 0px;
+}
