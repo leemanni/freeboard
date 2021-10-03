@@ -66,7 +66,7 @@
 				</td>
 			</tr>	
 			<tr>
-				<td colspan="4" align="center">
+				<td class="table-lastdata" colspan="4" align="center">
 					<label for="passwod">비밀번호</label>
 					<input type="password" id="password" name ="password">
 					<input class="button" type="submit" value="삭제하기">
