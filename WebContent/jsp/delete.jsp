@@ -8,10 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/style.css">
+<script type="text/javascript" src="../javascript/inputCheck.js"></script>
 <title>212 자유 게시판 - 삭제</title>
 </head>
 <body>
-	<form action="deleteOK.jsp">
+	<form action="deleteOK.jsp" onsubmit="return formCheck(this)">
 		<table align="center" width="1000" cellspacing="0">
 			<tr>
 				<th colspan="4">
@@ -79,7 +80,6 @@
 		<input type="hidden" name="idx" value="${vo.idx }">
 		<input type="hidden" name="currentPage" value="${currentPage}">
 	</form>
-	
 <footer class="board-footer">
 	<span>자유 게시판 ~~ made by leemanni</span>
 	<a href="https://github.com/leemanni"><i class="fab fa-github"></i>&nbsp;leemanni's github</a>

@@ -9,6 +9,7 @@
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/style.css">
 <script type="text/javascript" src="../javascript/setting.js"></script>
+<script type="text/javascript" src="../javascript/inputCheck.js"></script>
 <title>212 자유 게시판 - 해당 글 보기</title>
 </head>
 <body>
@@ -76,7 +77,7 @@
 	</table>
 	<hr color="gray" size="3" width="1000">
 	<!--  -->
-	<form action="commentOK.jsp" name ="commentForm" method="post">
+	<form action="commentOK.jsp" name ="commentForm" method="post" onsubmit="return formCheck(this)">
 		<table class="comment-table" align="center" width="1000" cellspacing="0">
 			<tr>
 				<!-- 댓글이보이면 안되는 줄로 작업이 완료 되면 hiddend으로 처리한다. -->

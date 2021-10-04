@@ -8,10 +8,11 @@
 <head>
 <meta charset="UTF-8">
 <link rel="stylesheet" href="../css/style.css">
+<script type="text/javascript" src="../javascript/inputCheck.js"></script>
 <title>212 자유 게시판 - 수정</title>
 </head>
 <body>
-	<form action="updateOK.jsp">
+	<form action="updateOK.jsp"  onsubmit="return formCheck(this)">
 		<table align="center" width="1000" cellspacing="0">
 			<tr>
 				<th colspan="4">
